@@ -4,7 +4,7 @@
       <section class="mb-5">
         <p class="mb-2">Bill</p>
         <div class="relative">
-          <img class="absolute left-3 top-[12px] my-auto" src="../assets/icon-dollar.svg"/>
+          <img class="absolute left-3 top-[12px] my-auto" src="../assets/icon-dollar.svg" alt="icon-dollar"/>
           <input v-model="bill" class="calc-input" placeholder="0">
         </div>
       </section>
@@ -16,7 +16,7 @@
         <p class="mb-2">Number of people</p>
 
         <div class="relative">
-          <img class="absolute left-3 top-[12px] my-auto" src="../assets/icon-person.svg"/>
+          <img class="absolute left-3 top-[12px] my-auto" src="../assets/icon-person.svg" alt="icon-person"/>
           <input v-model="peopleCount" :class="['calc-input', requirePeopleInput? 'input-req': '']" placeholder="0">
         </div>
       </section>
