@@ -66,14 +66,13 @@ export default {
       const val = this.bill * percent / (this.peopleCount);
       const result = Math.round(val * 100) / 100;
       const length = result.toString().length;
-      console.log('length ' + result.toString().length)
       if(length > 7) return '0';
       this.localSave();
       return result || 0;
     },
     getTotal: function (){
       if(this.requirePeopleInput == true) return 0;
-      const val = (Number(this.getTipAmount) + Number(this.bill)) / Number(this.peopleCount);
+      const val = Number(this.getTipAmount) + (Number(this.bill) / Number(this.peopleCount));
       const result = Math.round(val * 100) / 100;
       if(result > 10e6) return '0';
       this.localSave();
@@ -95,24 +94,18 @@ export default {
     localSave(){
       this.hasResult = false;
       if (this.bill != null && this.peopleCount != null && this.$store.state.percent != null){
-        console.log('---\nsaving...');
         this.hasResult = true;
         localStorage.setItem('bill', this.bill);
-        console.log(this.bill);
         localStorage.setItem('people', this.peopleCount);
-        console.log(this.peopleCount);
         localStorage.setItem('tip', this.$store.state.percent);
       }
     },
     localLoad(){
       const bill = localStorage.getItem('bill');
-      console.log(bill);
       this.bill = bill == 'null'? null: bill;
       const peopleCount = localStorage.getItem('people');
-      console.log(peopleCount);
       this.peopleCount = peopleCount == 'null'? null: peopleCount;
       const percent = localStorage.getItem('tip');
-      console.log(percent);
       this.$store.state.percent = percent == 'null'? null: percent;
     }
   },
